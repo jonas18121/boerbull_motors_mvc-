@@ -1,0 +1,10 @@
+<?php $title = 'Error'; ?>
+<?php ob_start(); //demarre une tamporisation de sortie ?>
+
+<section class='sectionUniversel'>
+    <?php echo $errorMessage; ?>
+</section>
+
+<?php $content = ob_get_clean(); // fermer la tamporisation de sortie et le mettre dans une variable --> ?>
+
+<?php require_once 'www/layout/layoutView.phtml'; ?>

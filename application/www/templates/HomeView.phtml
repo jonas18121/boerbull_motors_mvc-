@@ -1,0 +1,29 @@
+<?php $title = 'Acceuil'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section class="imgBack">
+    <h1>BOERBULL MOTORS</h1>
+</section>
+
+<section class='sectionUniversel'>
+    <h2>Choisissez une categorie de véhicules</h2>
+
+    <div class='divNosCar'>  
+        <?php foreach($home as $value): ?>
+            <article class="<?= htmlspecialchars(htmlentities($value['name'])) ?>">
+                <!-- il va envoyer le paramètre et la valeur category=super pour que CategoryController.class.php puisse le récupérer en $_GET[] -->
+                <a href="index.php?action=category&id_category=<?= htmlspecialchars(htmlentities($value['id_category'])) ?>">
+                    <h3><?= $value['name'] ?></h3>
+                    <!-- height="250" width="350" -->
+                    <img src="www/imgBoerbullMotors/<?= htmlspecialchars(htmlentities($value['image_url'])) ?>" alt="<?= htmlspecialchars(utf8_encode($value['modele'])) ?>"
+                    class='car'>
+                </a>
+            </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

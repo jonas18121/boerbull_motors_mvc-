@@ -1,0 +1,53 @@
+<?php $title = 'Une voiture'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section class='sectionUniversel'>
+    
+    
+
+    <?php foreach($oneCar as $value): ?>
+
+
+        <h2><?= htmlspecialchars(htmlentities($value['marque'])) . ' ' . htmlspecialchars(utf8_encode($value['modele'])) ?></h2>
+
+        <div class='myImgCar'>
+            <img src="www/imgBoerbullMotors/<?= $value['image_url'] ?>"  alt="<?= htmlspecialchars(utf8_encode($value['modele'])) ?>" class="myImgOneCar"> 
+        </div><!--  
+        
+    --><div class='myStatCar'>
+            <ul>
+                <li><strong>Marque : </strong><?= htmlspecialchars(htmlentities($value['marque'])) ?></li>
+                <li><strong>Modèle : </strong><?= htmlspecialchars(utf8_encode($value['modele'])) ?></li>
+                <li><strong>Année : </strong><?= htmlspecialchars(htmlentities($value['annee'])) ?></li>
+                <li><strong>Conso : </strong><?= htmlspecialchars(htmlentities($value['conso'])) ?> L/100 km</li>
+                <li><strong>Couleur : </strong><?= htmlspecialchars(htmlentities($value['color'])) ?></li>
+                <li><strong>Puissance : </strong><?= htmlspecialchars(htmlentities($value['puissance'])) ?> ch</li>
+                <li><strong>Moteur : </strong><?= htmlspecialchars(htmlentities($value['moteur'])) ?> cylindre</li>
+                <li><strong>Carburant : </strong><?= htmlspecialchars(htmlentities($value['carburant'])) ?></li>
+                <li><strong>0-100 KM : </strong><?= htmlspecialchars(htmlentities($value['cent'])) ?> secondes</li>
+                <li><strong>Nombre de place : </strong><?= htmlspecialchars(htmlentities($value['nombre_de_place'])) ?></li>
+                <li><strong>Prix pour 3 jours : </strong><?= htmlspecialchars(htmlentities($value['prix_trois_jours'])) ?> € hors taxe</li>
+            </ul>
+ 
+
+           
+            <?php if (!isAuthenticatedAdmin()) : ?>
+                <!-- si on est pas connecter le , Ajouter au panier , nous emmènera vers la page login  -->
+                <?php if (!isAuthenticatedUser()) : ?>
+                    <button><a href="index.php?action=user&action2=loginForm" onclick="return seConnecter()">Ajouer au panier</a></button>
+                <?php else : ?>    
+                    <button><a href="index.php?action=panier&id=<?= htmlspecialchars(htmlentities($value['id'])) ?>">Ajouter au panier</a></button>
+                <?php endif; ?>
+            <?php else : ?> 
+
+            <?php endif; ?>
+        </div>
+    <?php endforeach ; ?>
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>
+
+
+

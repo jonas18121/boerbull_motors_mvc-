@@ -1,0 +1,29 @@
+<?php $title = 'Connexion Admin'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+<section class='sectionUniversel'>
+
+    <h2>Connexion Admin</h2>
+    <button><a href="index.php?action=admin&action2=registerForm">INSCRIPTION</a></button>
+
+    <form action="index.php?action=admin&action2=loginAdmin" method="post" name="formulaire">
+
+        <div>
+            <input type='text' name='mail' id='mail' placeholder="Email" required>
+            <span id="msgMail"></span>
+        </div>
+
+        <div>
+            <input type='password' name='password' id="password" placeholder="Mot de passe" required>
+            <span id="msgPass"></span>
+        </div>
+        
+        <div>
+            <input type="submit" value="Valider" class="myValid">
+        </div>
+        
+    </form>
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

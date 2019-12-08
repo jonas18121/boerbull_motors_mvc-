@@ -1,0 +1,89 @@
+<?php $title = 'Panier'; ?>
+<?php ob_start(); ?><!-- demarre une tamporisation de sortie -->
+
+<section class='sectionUniversel'>
+
+    <h2>Mon panier</h2>
+
+    <div class="divScroll">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th scope="col">Nombres de véhicules</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">jours</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <?php if (!isAuthenticatedUser()) : ?>
+                
+
+            <?php else : ?>
+               
+                <?php if (!empty($panier)) : ?>
+
+                    <!--selection voiture dans mon panier -->
+                    <?php foreach($panier as $value): ?>
+                        <!-- voir pour accepter et afficher qu'un seul article -->
+                        <tr>
+                            <th scope="row"><?= htmlspecialchars(htmlentities($value['marque'])) . ' ' . htmlspecialchars(utf8_encode($value['modele'])) . ' ' . htmlspecialchars(htmlentities($value['puissance'])) ?> ch</th>
+                            <td><?=  htmlspecialchars(htmlentities($value['nombre_de_voiture']))  ?></td>
+                            <td><?= htmlspecialchars(htmlentities($value['prix_trois_jours'])) ?> €</td>
+                            <td>3</td>
+                            <td><a href="index.php?action=user&action2=deleteOneArticle&id=<?= htmlspecialchars(htmlentities($value['id'])) ?>" onclick="return confirmeDelete('userPanier')"> Supprimer</a></td>
+                        </tr>
+            
+           
+                    <?php endforeach; ?>
+
+                    <!-- prix ht -->
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Prix hors taxe </th>
+                        <td></td>
+                        <th><?= $prix_total_ht ?> €</th>
+                    </tr>
+        
+                    <!-- tva -->
+                    <tr>
+                        <th>TVA </th>
+                        <td></td>
+                        <th><?= $TVA ?> €</th>
+                    </tr>
+
+                    <!-- prix TTC -->
+                    <tr>
+                        <th>Prix TTC </th>
+                        <td></td>
+                        <th><?= $prix_total_TTC ?> €</th>
+                    </tr>
+
+                <?php endif; ?>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+    <?php if (isAuthenticatedAdmin()) : ?>
+
+    <?php else : ?>
+
+        <?php if (!isAuthenticatedUser()) : ?>
+            <button><a href="index.php?action=user&action2=loginForm">Faire une reservation</a> </button>
+        <?php else : ?>
+            <!-- creer le user pour entrer dans le booking-->
+            <button><a href="index.php?action=user&action2=bookingForm">Faire une reservation</a> </button>
+        <?php endif; ?>
+        
+    <?php endif; ?>    
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

@@ -1,0 +1,386 @@
+/***********css par défaut mobile ********************/
+
+/* GLOBAL */
+
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem; 
+    width: 100%;
+    background-color: black;
+}
+
+img, video, table{
+    max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+    margin: 0.2rem;
+}
+
+table{
+    width: 100%;
+}
+
+input{
+    margin: 1rem 1rem 1rem 0;
+}
+
+p{
+    margin: 0;
+}
+
+button, .myValid, .nosAgence, .prixTTC{
+    background-color: #f6dc12;
+    border-color: #f6dc12;
+}
+
+button,button a, .myValid, .prixTTC{
+    color: #fff;
+}
+
+.divBar, .sectionUniversel, .sectionUniversel2, .sectionApropos{
+    background-color: #fff;  
+}
+
+.entreprise, nav li, .sectionUniversel, .sectionUniversel2, footer{
+    text-align: center;
+}
+
+.divBar nav>a , h2, h3, p, a, .entreprise, .divCategory>a, .myStatCar, .adminGetCar{
+    color: #354950; 
+    font-weight: bold;
+    
+}
+
+.divScroll{
+    overflow-x: scroll;
+}
+
+
+nav a, nav > ul::after, .entreprise, .adminAddCar, .carView{
+    display: block;
+}
+
+
+
+
+/* /////////// H E A D E R ////////////// */
+
+
+
+
+
+
+nav{
+    font-size: 3rem;
+    margin-top: 4rem;
+}
+
+nav a{
+    font-size: 2.5rem;
+    padding: 2.5rem;
+}
+
+
+
+h1{
+    font-size: 5.6rem;
+    letter-spacing: 4.5rem;
+    color: #354950;
+}
+
+/* menu et sous menu */
+nav ul{
+
+    margin-bottom: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+}
+
+
+nav > ul::after{
+    content: "";
+    clear: both;
+}
+
+nav li, li {
+    list-style-type: none;
+}
+
+nav .menu{
+    position: relative;
+}
+
+nav li:hover .sous_menu{
+    display: inline-block;
+    position: absolute;
+    top: 4rem;
+    left: 6rem;
+    padding: 0rem;
+    z-index: 100000;
+    background-color: mintcream;
+} 
+
+.sous_menu {
+    display: none;
+} 
+
+.sous_menu li{
+    border-bottom: 0.1rem solid #CCC;
+}
+
+
+
+
+.divBar{
+    padding: 0 0 2rem;
+}
+
+
+
+.entreprise{
+    font-size: 5rem;
+    margin: 0;
+}
+
+
+.plogo>a>img{
+    display: none;
+}
+
+
+/* /////////// M A I N ////////////// */
+
+
+h2{
+    font-size: 3rem;
+    background: linear-gradient(to right, #f6dc12, white);
+    width: 70%;
+    margin: 0 auto 1rem;
+}
+
+h3{
+    font-size: 2.5rem;
+    text-transform: capitalize;
+}
+
+.divNosCar > article > a >img{
+    width: 100%;
+}
+
+
+
+.sectionUniversel, .sectionUniversel2{
+    padding: 1rem;
+    margin: 3rem;
+}
+
+
+.sectionUniversel p{
+    text-align: left;
+}
+
+
+.sectionUniversel fieldset{
+    display: inline;
+}
+
+.nosAgence{
+    margin: 1rem 4rem;
+    padding: 1rem;
+
+}
+
+
+.imgBack{
+    display: none;
+}
+
+/* ****** ADMIN GET CAR ************ */
+
+.adminGetCar{
+    background-color: darkgrey;
+    margin: 1rem;
+}
+
+
+/* ****** PAGE CATEGORY ********** */
+.divCategory, .adminGetCar{
+    display: inline-block;
+}
+
+
+/* ********* ONE CAR VIEW ************ */
+
+.myImgOneCar{
+    width: 100%;
+} 
+
+
+
+/* ********* USER BOOKING FORM ************ */
+.prixTTC{
+    margin: 1rem auto;
+    width: max-content;
+    border: 0.1rem solid #f6dc12;
+}
+
+
+
+/* /////////// F O O T E R ////////////// */
+
+footer{
+    padding: 1rem;
+    background-color: #101010;
+}
+
+
+.navBar>a, footer p{
+    color: #f6dc12;
+}
+
+
+
+
+
+
+/* **************** css pour TABLETTE *********************** */
+@media screen and (min-width: 500px) {
+
+
+
+
+     /* /////////// H E A D E R ////////////// */
+
+    
+    nav li:hover .sous_menu{
+        top: 4rem;
+        left: 24rem;
+    } 
+
+    .divNosCar > article{
+        display: inline-block;
+        width: 60%;
+        margin: 2rem 3rem;
+    }
+
+
+
+    /* /////////// M A I N ////////////// */
+
+
+
+
+
+    /* /////////// F O O T E R ////////////// */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* **********css pour desktop home******************* */
+
+@media screen and (min-width:1025px){
+
+
+    nav>ul>li, .plogo>a>img, .entreprise, .divCategory a, .divCategory, .adminGetCar{
+        display: inline-block;
+    }
+
+    .divBar, .divNosCar, .navBar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .carView, .imgBack{
+        display:block;
+    }
+
+
+
+    /* /////////// H E A D E R ////////////// */
+    
+    
+    
+    nav{
+        margin-top: 0rem;
+    }
+    
+
+    nav>ul>li{
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    nav li:hover .sous_menu{
+        top: 2rem;
+        left: -15rem;
+    } 
+    
+    .sous_menu li{
+        border-bottom: 0.1rem solid #CCC;
+    }
+
+    .divBar{
+        padding: 0;
+    }
+
+    .entreprise, li, nav a{
+        font-size: 1.6rem;
+    }
+
+
+    .entreprise{
+        vertical-align: top;
+        padding-top: 3rem;
+    }
+    
+    
+    /* ////// IMAGE D'ACCUEIL ////// */
+    .imgBack{
+        background-image: url('../imgBoerbullMotors/back.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 20rem 0 70rem;
+        text-align: center;
+        margin:0 0 3rem;
+    }  
+    
+    
+    
+    
+    
+    /* /////////// M A I N ////////////// */
+
+
+    .divNosCar > article {
+        width: 25%;
+        margin: 0; 
+    }
+    
+    
+    .sectionUniversel fieldset{
+        display: inline;
+    }
+}  

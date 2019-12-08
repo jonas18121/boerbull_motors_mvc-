@@ -1,0 +1,45 @@
+<?php $title = 'liste de rendez-vous'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section class='sectionUniversel'>
+    <h2>Les resevations</h2>
+
+    <div class="divScroll">
+        <table class="ui table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Date de debut</th>
+                    <th>Date de fin</th>
+                    <th>Nombres de personnes</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php foreach ($adminFindBooking as $value) : ?>
+                    <tr>
+                        <td><?= htmlspecialchars(utf8_encode($value['last_name'])) ?></td>
+                        <td><?= htmlspecialchars(utf8_encode($value['first_name'])) ?></td>
+                        <td><?= htmlspecialchars(htmlentities($value['mail'])) ?></td>
+                        <td><?= htmlspecialchars(htmlentities($value['booking_date_debut'])) . ' ' . htmlspecialchars(htmlentities($value['booking_time_debut'])) ?>
+                        </td>
+                        <td><?= htmlspecialchars(htmlentities($value['booking_date_fin'])) . ' ' . htmlspecialchars(htmlentities($value['booking_time_fin'])) ?>
+                        </td>
+                        <td><?= htmlspecialchars(htmlentities($value['number_of_seats'])) ?></td>
+
+                        <td>
+                            <a href="index.php?action=admin&action2=booking&action3=delete&id=<?= htmlspecialchars(htmlentities($value['id'])) ?>"
+                                onclick="return confirmeDelete('adminBooking')">supprimer</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

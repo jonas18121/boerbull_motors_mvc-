@@ -1,0 +1,18 @@
+<?php $title = 'categories'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+<section class='sectionUniversel'>
+    <h2>Category : <?= htmlspecialchars(htmlentities($categories['0']['name'])) ?></h2>
+    
+    <div class='divCategory'>
+        <?php foreach($categories as $value): ?> 
+            <a href="index.php?action=oneCar&id=<?= htmlspecialchars(htmlentities($value['id'])) ?>">
+                <img src="www/imgBoerbullMotors/<?= htmlspecialchars(htmlentities($value['image_url'])) ?>"  height="250" width="350" alt="<?= htmlspecialchars(utf8_encode($value['modele'])) ?>">
+                <p><?= htmlspecialchars(htmlentities($value['marque'])) . ' ' . htmlspecialchars(utf8_encode($value['modele'])) ?></p>
+            </a>   
+        <?php endforeach ?>  
+    </div>    
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

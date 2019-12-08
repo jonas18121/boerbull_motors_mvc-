@@ -1,0 +1,37 @@
+<?php $title = 'Tarifs'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+<section class='sectionUniversel'>
+    
+    <h2>Les tarifs</h2>
+
+    <div class="divScroll">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> </th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Modèle</th>
+                    <th scope="col">Puissance</th>
+                    <th scope="col">Categorie</th>
+                    <th scope="col">Prix pour 3 jours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($tarifView as $value): ?>
+                    <tr>
+                        <th scope="row">Louer</th>
+                        <td><?= htmlspecialchars(htmlentities($value['marque'])) ?></td>
+                        <td><?= htmlspecialchars(utf8_encode($value['modele'])) ?></td>
+                        <td><?= htmlspecialchars(htmlentities($value['puissance'])) ?> ch</td>
+                        <td><?= htmlspecialchars(htmlentities($value['name'])) ?></td>
+                        <td><?= htmlspecialchars(htmlentities($value['prix_trois_jours'])) ?> € hors taxe</td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

@@ -1,0 +1,105 @@
+<?php $title = 'Modifier une voiture'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section class='sectionUniversel'>
+    <?php foreach($adminEditFormCars as $value): ?>
+
+        <h2><?= htmlspecialchars(htmlentities($value['marque'])) . ' ' . htmlspecialchars(utf8_encode($value['modele'])) ?></h2>
+        <div class='myImgCar'>
+            <img src="www/imgBoerbullMotors/<?= htmlspecialchars(htmlentities($value['image_url'])) ?>"  class="myImgOneCar" alt="<?= $value['modele'] ?>">
+        </div><!--  
+        
+    --><div class='myStatCar'>
+            <ul>
+                <li><strong>Marque : </strong><?= htmlspecialchars(htmlentities($value['marque'])) ?></li>
+                <li><strong>Modèle : </strong><?= htmlspecialchars(utf8_encode($value['modele'])) ?></li>
+                <li><strong>Année : </strong><?= htmlspecialchars(htmlentities($value['annee'])) ?></li>
+                <li><strong>Conso : </strong><?= htmlspecialchars(htmlentities($value['conso'])) ?> L/100 km</li>
+                <li><strong>Couleur : </strong><?= htmlspecialchars(htmlentities($value['color'])) ?></li>
+                <li><strong>Puissance : </strong><?= htmlspecialchars(htmlentities($value['puissance'])) ?> ch</li>
+                <li><strong>Moteur : </strong><?= htmlspecialchars(htmlentities($value['moteur'])) ?> cylindre</li>
+                <li><strong>Carburant : </strong><?= htmlspecialchars(htmlentities($value['carburant'])) ?></li>
+                <li><strong>0-100 KM : </strong><?= htmlspecialchars(htmlentities($value['cent'])) ?> secondes</li>
+                <li><strong>Nombre de place : </strong><?= htmlspecialchars(htmlentities($value['nombre_de_place'])) ?></li>
+                <li><strong>Prix pour 3 jours : </strong><?= htmlspecialchars(htmlentities($value['prix_trois_jours'])) ?> € hors taxe</li>
+            </ul>
+
+    
+            <form action="index.php?action=admin&action2=car&action3=edit" method="post" name="formulaire">
+
+                <div>
+                    <input type="hidden" name="id" value="<?= $value['id'] ?>"> 
+                </div>
+
+                <div>
+                    <label for="marque">Marque : </label>
+                    <input type="text" name="marque" value="<?= $value['marque'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="modele">Modèle : </label>
+                    <input type="text" name="modele" value="<?= $value['modele'] ?>" required>
+                </div>
+
+
+                <div>
+                    <label for="annee">Année : </label>
+                    <input type="text" name="annee" value="<?= $value['annee'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="conso">Conso : </label>
+                    <input type="text" name="conso" value="<?= $value['conso'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="color">Couleur : </label>
+                    <input type="text" name="color" value="<?= $value['color'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="puissance">Puissance : </label>
+                    <input type="text" name="puissance" value="<?= $value['puissance'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="moteur">Moteur : </label>
+                    <input type="text" name="moteur" value="<?= $value['moteur'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="carburant">Carburant : </label>
+                    <input type="text" name="carburant" value="<?= $value['carburant'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="cent">0-100 KM : </label>
+                    <input type="text" name="cent" value="<?= $value['cent'] ?>" require>
+                </div>
+
+                <div>
+                    <label for="nombre_de_place">Nombre de place : </label>
+                    <input type="text" name="nombre_de_place" value="<?= $value['nombre_de_place'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="id_category">Categorie : </label>
+                    <input type="text" name="id_category" value="<?= $value['id_category'] ?>" required>
+                </div>
+
+                <div>
+                    <label for="prix_trois_jours">Prix pour 3 jours : </label>
+                    <input type="text" name="prix_trois_jours" value="<?= $value['prix_trois_jours'] ?>" required>
+                </div>
+
+                <div>
+                    <input type="submit" value="modifier" class="myValid">
+                </div>
+            </form>
+        </div>
+    <?php endforeach ; ?>
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

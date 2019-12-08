@@ -1,0 +1,50 @@
+<?php $title = 'Liste de client'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section class='sectionUniversel'>
+    <h2>Mes clients</h2>
+    <button><a href="index.php?action=admin&action2=users&action3=addForm">Ajouter un user</a></button>
+
+    <div class="divScroll">
+        <table class="ui table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($adminGetUsers as $user) : ?>
+                    <tr>
+                        <td><?= htmlspecialchars(utf8_encode($user['last_name'])) ?></td>
+                        <td><?= htmlspecialchars(utf8_encode($user['first_name'])) ?></td>
+                        <td><?= htmlspecialchars(htmlentities($user['mail'])) ?></td>
+
+                        <td>
+                            <a
+                                href="index.php?action=admin&action2=users&action3=bookingForm&id=<?= htmlspecialchars(htmlentities($user['id'])) ?>">
+                                    Ajouter un rendez-vous</a>
+                        </td>
+                        <td>
+                            <a
+                                href="index.php?action=admin&action2=users&action3=editForm&id=<?= htmlspecialchars(htmlentities($user['id'])) ?>">
+                                    Modifier</a>
+                        </td>
+                        <td>
+                            <a href="index.php?action=admin&action2=users&action3=delete&id=<?= htmlspecialchars(htmlentities($user['id'])) ?>"
+                                onclick="return confirmeDelete('adminUser')">Supprimer</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

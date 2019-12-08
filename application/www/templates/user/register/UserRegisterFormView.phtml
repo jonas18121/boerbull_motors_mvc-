@@ -1,0 +1,50 @@
+<?php $title = 'Inscription'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section  class='sectionUniversel'>
+    <h2>Inscription</h2>
+
+    <form action="index.php?action=user&action2=register" method="post" name="formulaire">
+
+        <div>
+            <label for='last_name'>Nom : </label>
+            <input type='text' name='last_name' id="lastName" placeholder="Nom" required="required">
+            <span id="msgName"></span>
+        </div>
+        
+
+        <div>
+            <label for='first_name'>Prénom : </label>
+            <input type='text' name='first_name' placeholder="Prenom" id="firstName" required="required">
+            <span id="msgFirstName"></span>
+        </div>
+
+        <div>
+            <label for='mail'>Email : </label>
+            <input type='text' name='mail' placeholder="Email" id='mail' required="required">
+            <span id="msgMail"></span>
+        </div>
+
+        <div>
+            <label for='password'>Mot de passe : </label>
+            <input type='password' name='password' placeholder="Mot de passe" id="password" required="required">
+            <span id="msgPass"></span>
+        </div>
+        
+        <div>
+            <label for='password'>Confirmer mot de passe : </label>
+            <input type='password' name='password' placeholder="Mot de passe"  required="required">
+        </div>
+
+        <div>
+            <input type="submit" value="Enregistrer" class="myValid">
+        </div>
+        
+    </form>
+    
+</section>
+
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>

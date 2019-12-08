@@ -1,0 +1,49 @@
+<?php $title = 'Rendez-vous'; ?>
+<!-- demarre une tamporisation de sortie -->
+<?php ob_start(); ?>
+
+<section class='sectionUniversel'>
+
+    <h2>Mes rendez-vous</h2>
+
+    <div class="divScroll">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"> Date et Heure de début</th>
+                    <th scope="col"> Date et Heure de fin</th>
+                    <th scope="col">Nombre de personne</th>
+                    <th scope="col">Supprimer </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!isAuthenticatedUser()) : ?>
+                <?php else : ?>
+                    <!--selectionne voiture dans mon panier -->
+                    <?php foreach($getBooking as $value): ?>
+                        <!-- voir pour accepter et afficher qu'un seul article -->
+                        <tr>
+                            <th><?= htmlspecialchars(utf8_encode($_SESSION['user']['first_name'])) . ' ' . htmlspecialchars(utf8_encode($_SESSION['user']['last_name'])) ?>
+                            </th>
+                            <th scope="row">
+                                <?= htmlspecialchars(htmlentities($value['booking_date_debut'])) . ' à ' . htmlspecialchars(htmlentities($value['booking_time_debut'])) ?>
+                            </th>
+                            <th scope="row">
+                                <?= htmlspecialchars(htmlentities($value['booking_date_fin'])) . ' à ' . htmlspecialchars(htmlentities($value['booking_time_fin'])) ?>
+                            </th>
+                            <td><?= htmlspecialchars(htmlentities($value['number_of_seats'])) ?> </td>
+                            <td><a href="index.php?action=user&action2=deleteOneBooking&id=<?= htmlspecialchars(htmlentities($value['id'])) ?>"
+                                    onclick="return confirmeDelete('userBooking')"> Supprimer</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- fermer la tamporisation de sortie et le mettre dans une variable -->
+<?php $content = ob_get_clean(); ?>
+<?php require_once 'www/layout/layoutView.phtml'; ?>
