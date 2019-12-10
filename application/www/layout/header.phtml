@@ -1,0 +1,102 @@
+<?php 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+ ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?= $title ?></title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css'/>
+    <link rel="stylesheet" href="www/css/normalize.css"/>
+    <link rel="stylesheet" href="www/css/style.css"/>
+</head>
+<body>
+    <header>
+
+        <div class ='divBar' >
+            <div class='plogo'>
+                <a href="index.php?action=home">
+                    <img src="www/imgBoerbullMotors/auto.png" height="80" width="70" alt="Boerbull Motors" class='logo'>
+                </a><!--  
+            --><p class='entreprise'><a href="index.php?action=home"> Boerbull Motors, Location de voiture de luxe </a></p>
+        </div>
+    
+
+        <nav>
+            <ul>
+                <li><a href="index.php?action=aPropos"> A propos</a></li>
+                <li><a href="index.php?action=tarif">Tarifs</a></li>
+                <li><a href="index.php?action=panierView"> Panier</a></li>
+                <li>
+                    <!-- si on est pas connecter on affiche le lien de connexion  -->
+                    <?php if (!isAuthenticatedUser() && !isAuthenticatedAdmin()) : ?>
+                        <a href="index.php?action=user&action2=loginForm"> Connexion</a>
+                    <?php else: ?>    
+                         <!-- si le user est connecter , il peut maintenant ce deconnecter si il veut -->
+                        <?php if (isAuthenticatedUser()) : ?>
+                            <ul >
+                                <li class="menu">
+                                    <?= getFirstName() ?><!-- le prénom de l'user -->
+
+                                    <ul class="sous_menu">
+                                        <li class="active">
+                                            <!-- affiche user RDV -->
+                                            <a href="index.php?action=user&action2=userRDV&user_i=<?= htmlspecialchars(htmlentities($_SESSION['user']['id'])) ?>" > Mes Reservations</a>
+                                        </li>
+                                        <li>
+                                            <!-- user supprime son compte -->                                               <!-- popup de confirmation avant de supprimer-->
+                                            <a href="index.php?action=user&action2=deleteUser&id=<?= htmlspecialchars(htmlentities($_SESSION['user']['id'])) ?>" onclick="return confirmeDelete('user')" > supprimer mon compte</a> 
+                                        </li>
+                                        <li>
+                                            <!-- deconnexion -->
+                                            <a href="index.php?action=user&action2=logout" class="item">
+                                                Déconnexion
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php elseif (isAuthenticatedAdmin()) : ?>
+                            <ul>
+                                <li class="menu">
+                                    <?= getAdminName() ?> <!-- nom de l'admin  -->
+                            
+                                    <ul class="sous_menu">
+                                        <li>
+                                            <!-- liste des voitures  -->
+                                            <a href="index.php?action=admin&action2=car&action3=get" class="item">voiture</a>
+                                        </li>
+                                        <li>
+                                            <!-- liste des booking-->
+                                            <a href="index.php?action=admin&action2=booking&action3=get" class="item"> reservation de client</a>
+                                        </li>
+                                        <li>
+                                            <!-- liste des utilisateurs-->
+                                            <a href="index.php?action=admin&action2=users&action3=get" class="item"> utilisateur</a>
+                                        </li>
+                                        <li>
+                                            <!-- admin supprime son compte -->
+                                            <a href="index.php?action=admin&action2=deleteAdmin&id=<?= htmlspecialchars(htmlentities($_SESSION['admin']['id'])) ?>" onclick="return confirmeDelete('admin')"> supprime mon compte</a>
+                                        </li>
+                                        <li>
+                                            <!-- deconnexion -->
+                                            <a href="index.php?action=admin&action2=logout" class="item">
+                                                 Déconnexion
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </li>
+            </ul>    
+        </nav>   
+    </header>
+    <main>

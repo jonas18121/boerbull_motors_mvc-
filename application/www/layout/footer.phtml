@@ -1,0 +1,76 @@
+        <section class='sectionUniversel2'>
+            <h2>Notre Agence</h2>
+
+            <div class="nosAgence">
+                <h3>NANTES</h3>
+
+                <p>
+                    17, Rue Emile Zola, 
+                    <br> Nantes, 
+                    <br> France
+                    <br><strong>+33(0)4 92 18 07 08</strong>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <nav  class ='navBar'>
+            <a href="index.php?action=aPropos"> A propos</a>
+            <a href="index.php?action=tarif"> Tarifs</a>
+            <a href="index.php?action=panierView"> Panier</a>
+
+            <!-- si on est pas connecter on affiche le lien de connexion  -->
+            <?php if (!isAuthenticatedUser() && !isAuthenticatedAdmin()) : ?>
+                <a href="index.php?action=user&action2=loginForm">Connexion</a>
+            <?php endif; ?>
+
+            <!-- si le user est connecter , il peut maintenant ce deconnecter si il veut -->
+            <?php if (isAuthenticatedUser()) : ?>
+                <!-- affiche user RDV -->
+                <a href="index.php?action=user&action2=userRDV&user_i=<?= htmlspecialchars(htmlentities($_SESSION['user']['id'])) ?>" >Mes Reservations</a>
+
+                <!-- deconnexion -->
+                <a href="index.php?action=user&action2=logout" class="item">
+                    <?= getFirstName() ?> Déconnexion
+                </a>
+
+                <!-- user supprime son compte -->
+                <a href="index.php?action=user&action2=deleteUser&id=<?= htmlspecialchars(htmlentities($_SESSION['user']['id'])) ?>" onclick="return confirmeDelete('user')" > supprime mon compte</a>
+            <?php endif; ?>
+
+            <?php if (isAuthenticatedAdmin()) : ?>
+
+                <!-- liste des utilisateurs-->
+                <a href="index.php?action=admin&action2=users&action3=get" class="item"> utilisateur</a>
+
+
+                <!-- liste des voitures-->
+                <a href="index.php?action=admin&action2=car&action3=get" class="item">voiture</a>
+
+                <!-- liste des booking -->
+                <a href="index.php?action=admin&action2=booking&action3=get" class="item"> reservation de client</a>
+
+                <!-- deconnexion -->
+                <a href="index.php?action=admin&action2=logout" class="item">  
+                    <?= getAdminName() ?> Déconnexion
+                </a>
+
+                <!-- admin supprime son compte -->
+                <a href="index.php?action=admin&action2=deleteAdmin&id=<?= htmlspecialchars(htmlentities($_SESSION['admin']['id'])) ?>" onclick="return confirmeDelete('admin')" class="item"> supprime mon compte</a>
+
+            <?php endif; ?>
+        </nav>
+
+        <p class='logoFooter'>
+            <a href="index.php">
+                <img src="www/imgBoerbullMotors/auto.png" height="80" width="70" alt="Boerbull Motors" class='logo'>
+            </a>
+        </p>
+
+        <p>Copyrigth : 2019, image reserver à Boerbull Motors</p>
+
+    </footer>
+    <script type="text/javascript" src="www/js/controle.js" ></script>
+</body>
+</html>
