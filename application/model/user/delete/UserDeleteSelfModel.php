@@ -1,17 +1,13 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 /** user supprime son compte 
  * 
- * @param int
- * 
+ * @param int $id
  * @return void
 */
-function deleteSelfUser($id){
-
+function deleteSelfUser(int $id) :void
+{
     $db = new Database;
     $db = $db->dbConnect();
 
