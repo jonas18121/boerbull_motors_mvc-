@@ -1,17 +1,13 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
-
 
 /** afficher les RDV 
  * 
- * @param int
- * 
+ * @param int $user_i
  * @return array
 */
-function getBooking($user_i){
+function getBooking(int $user_i) :array
+{
     //connexion à la bdd
     $db = new Database;
     $db = $db->dbConnect();
@@ -26,15 +22,13 @@ function getBooking($user_i){
     return $getBooking;
 }
 
-
-
 /** effacer un RDV 
  * 
- * @param int
- * 
+ * @param int $id
  * @return void
 */
-function deleteBooking($id){
+function deleteBooking(int $id) :void
+{
     //connexion à la bdd
     $db = new Database;
     $db = $db->dbConnect();
