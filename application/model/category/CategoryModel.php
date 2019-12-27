@@ -1,20 +1,14 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
-
-//appel dans la librairie
-include_once 'library/Tools.php';
-
+require_once 'library/Tools.php';
 
 /** selectionner par categorie 
  * 
- * @param int
- * 
- * @return array
+ * @param int $category
+ * @return array $categories
 */
-function findCategory($category){
+function findCategory(int $category) :array
+{
     //connexion à la bdd
     $db = new Database;
     $db = $db->dbConnect();
@@ -39,7 +33,8 @@ function findCategory($category){
  *
  * @return array 
  */ 
-function findAllo(){ 
+function findAllo() :array
+{ 
 
     $db = new Database;
     $db = $db->dbConnect();

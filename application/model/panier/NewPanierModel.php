@@ -1,25 +1,16 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 class panierModel{
 
-
     private $pdo;
 
-
-
     public function __construct(){
-        //s'il n'y a pas de session active , on demarre une session 
         if(!isset($_SESSION)){
             session_start();
         }
 
-        //si la $_SESSION['panier'] n'existe pas , on la cree avec un tableau vide dedans
         if (!isset($_SESSION['panier'])){
-            
             $_SESSION['panier'] = array();
         }
 
@@ -43,14 +34,12 @@ class panierModel{
     /**
      * calcul le total des prix hors taxe des élément présent dans le panier
      * 
-     * @param array
-     * 
-     * @return int/array
+     * @param array $session
+     * @return int|string
      */
-    public function prixHorsTaxe(array $session){
-        
+    public function prixHorsTaxe(array $session)
+    {
         $total = 0;
-
 
         if(empty($session)){
 
@@ -66,16 +55,12 @@ class panierModel{
             $products->execute(array('id' => implode(',' , $session)));
             $products = $products->fetchAll(PDO::FETCH_OBJ); // PDO::FETCH_OBJ pour recupéré le résultat sous forme d'objet
 
-
             foreach($products as $product){
-
                 //prix hors taxes , fois le nombres de voiture avec le même id
                 $total += $product->prix_trois_jours * $_SESSION['panier'][$product->id];
             }
             return $total;
         }
-
-        
     }
 
 
@@ -83,14 +68,13 @@ class panierModel{
 
     /** calculer la TVA qui s'ajoutera au prix hors taxes 
      * 
-     * @param array
+     * @param array $session
      * 
-     * @return int/array
+     * @return int|string
     */
-    public function TVA(array $session){
-
+    public function TVA(array $session)
+    {
         $total = 0;
-
 
         if(empty($session)){
 
@@ -98,7 +82,7 @@ class panierModel{
             return $products;
 
         }else {
-            // on calcule le la TVA pendant la requête
+            // on calcule la TVA pendant la requête
             $sql = 'SELECT id, round(SUM(prix_trois_jours)*(0.2),2) AS TVA FROM car WHERE id IN ('.implode(',',$session).')';
 
             $TVA = $this->pdo->prepare($sql);
@@ -107,7 +91,6 @@ class panierModel{
 
 
             foreach($TVA as $product){
-
                 //TVA , fois le nombres de voiture avec le même id
                 $total += $product->TVA * $_SESSION['panier'][$product->id];
             }
@@ -122,16 +105,15 @@ class panierModel{
 
     /** calculer le prix TTC 
      * 
-     * @param array
+     * @param array $session
      * 
-     * @return int/array
+     * @return int|string
     */
-    public function prixTTC(array $session){
-
+    public function prixTTC(array $session)
+    {
         $total = 0;
 
         if(empty($session)){
-
             $products = implode(array()); 
             return $products;
 
@@ -145,7 +127,6 @@ class panierModel{
             $prixTTC = $prixTTC->fetchAll(PDO::FETCH_OBJ);
 
             foreach($prixTTC as $product){
-
                 //TVA , fois le nombres de voiture avec le même id
                 $total += $product->prixTTC * $_SESSION['panier'][$product->id];
             }
@@ -163,12 +144,11 @@ class panierModel{
 
     /** ajouter un element au panier
      * 
-     * @param int
+     * @param int $product_id
      * 
-     * @return int
      */
-    public function addPanier($product_id){
-
+    public function addPanier(int $product_id) 
+    {
         if(isset($product_id)){
 
             $sql = 'SELECT id FROM car WHERE id = :id';
@@ -199,24 +179,21 @@ class panierModel{
 
     /** effacer un élément du panier
      * 
-     * @param int
-     * 
+     * @param int $product_id
      * @return void
      */
-    public function deleteOne($product_id){
-    
+    public function deleteOne(int $product_id) : void
+    {
         unset($_SESSION['panier'][$product_id]);
     }
-
-
 
 
     /** effacer tous les éléments du panier
      * 
      * @return void
      */
-    public function deleteAll(){
-        
+    public function deleteAll() :void
+    {
         unset($_SESSION['panier']);
         
     }
@@ -227,16 +204,13 @@ class panierModel{
 
     /** selectonner les voitures qui sont dans le panier
      * 
-     * @param array
-     * 
-     * @return array
+     * @param array $session
+     * @return array|string
      */
-    public function PanierView(array $session){
-
+    public function PanierView(array $session)
+    {
         if(!empty($session)){
 
-            
-    
             //implode() va convertir le tableau $session en chaine de caractère pour les utilisés dans la requète
             $sql = "SELECT id, marque, modele, puissance, prix_trois_jours, nombre_de_voiture FROM car WHERE id IN (".implode(',',$session).")";
 

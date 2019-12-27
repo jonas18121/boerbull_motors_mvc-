@@ -1,19 +1,14 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
-
-//appel dans la librairie
 include_once 'library/Tools.php';
 
 /** selectionne une voiture 
  * 
- * @param int
- * 
- * @return array
+ * @param int $one
+ * @return array $oneCar
 */
-function OneCar($one){
+function OneCar(int $one) : array
+{
     //connexion à la bdd
     $db = new Database;
     $db = $db->dbConnect();
@@ -22,7 +17,6 @@ function OneCar($one){
 
     $oneCar = $db->prepare($sql);
     $oneCar->execute(array('id' => $one));
-
     $oneCar = $oneCar->fetchAll();
     
     if(empty($oneCar)){
@@ -32,17 +26,13 @@ function OneCar($one){
     return $oneCar;
 }
 
-
-
-
-
 /** selectionne une voiture 
  * 
- * @param array
- * 
- * @return array
+ * @param array $session
+ * @return array $oneCar
 */
-function OneCarBooking(array $session){
+function OneCarBooking(array $session) :array
+{
     //connexion à la bdd
     $db = new Database;
     $db = $db->dbConnect();
