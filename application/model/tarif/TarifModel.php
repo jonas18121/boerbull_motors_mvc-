@@ -1,15 +1,12 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 /** afficher les tarifs
  * 
  * @return array
  */
-function getTarifs(){
-    //connexion à la bdd
+function getTarifs() : array 
+{
     $db = new Database;
     $db = $db->dbConnect();
 
