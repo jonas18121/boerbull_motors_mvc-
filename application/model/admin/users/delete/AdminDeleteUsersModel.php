@@ -1,22 +1,17 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
-/** supprimer un user 
+/** admin supprime un user 
  * 
  * @param int
- * 
  * @return void
 */
-function deleteUser($id){
-
+function deleteUser(int $id) : void
+{
     $db = new Database;
     $db = $db->dbConnect();
 
     $sql = "DELETE FROM user WHERE id = :id ";
-
     $deleteUser = $db->prepare($sql);
     $deleteUser->execute([':id' => $id]);
 }

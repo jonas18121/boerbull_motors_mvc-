@@ -1,7 +1,4 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 
@@ -9,7 +6,8 @@ require_once 'config/DataBase.php';
  * 
  * @return array
 */
-function GetUsers(){
+function GetUsers() : array
+{
     
     $db = new Database;
     $db = $db->dbConnect();

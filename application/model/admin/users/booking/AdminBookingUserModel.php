@@ -1,21 +1,15 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
-
-//appel dans la librairie
-include_once 'library/Tools.php';
+require_once 'library/Tools.php';
 
 //en GET 
 /** Afficher un seul user 
  * 
  * @param int
- * 
  * @return array
 */
-function GetUser($id){
-    
+function GetUser(int $id) : array 
+{    
     $db = new Database;
     $db = $db->dbConnect();
 
@@ -28,21 +22,23 @@ function GetUser($id){
     if(empty($getUser)){
         redirect("index.php");
     }
-
     return $getUser;
 }
-
-
 
 //en POST
 /** admin ajoute un RDV pour un user 
  * 
- * @param int/string/dateTime
+ * @param int
+ * @param string
+ * @param string
+ * @param string
+ * @param string
+ * @param int
  * 
  * @return void
 */
-function adminAddBooking($user_id, $booking_date_debut, $booking_time_debut, $booking_date_fin, $booking_time_fin, $number_of_seats){
-
+function adminAddBooking(int $user_id, string $booking_date_debut, string $booking_time_debut, string $booking_date_fin, string $booking_time_fin, int $number_of_seats) : void
+{
     $db = new Database;
     $db = $db->dbConnect();
 
@@ -51,12 +47,11 @@ function adminAddBooking($user_id, $booking_date_debut, $booking_time_debut, $bo
 
     $adminAddBooking = $db->prepare($sql);
     $adminAddBooking->execute([
-
-        ':user_i' => $user_id, 
-        ':booking_date_debut' => $booking_date_debut, 
-        ':booking_time_debut' => $booking_time_debut,
-        ':booking_date_fin' => $booking_date_fin, 
-        ':booking_time_fin' => $booking_time_fin,
-        ':number_of_seats' => $number_of_seats
+        ':user_i'               => $user_id, 
+        ':booking_date_debut'   => $booking_date_debut, 
+        ':booking_time_debut'   => $booking_time_debut,
+        ':booking_date_fin'     => $booking_date_fin, 
+        ':booking_time_fin'     => $booking_time_fin,
+        ':number_of_seats'      => $number_of_seats
     ]);
 }
