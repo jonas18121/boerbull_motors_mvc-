@@ -1,20 +1,15 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
-
-//appel dans la librairie
-include_once 'library/Tools.php';
+require_once 'library/Tools.php';
 
 //en $_GET
 /** admin affiche le user a modifier 
  * 
  * @param int
- * 
  * @return array
 */
-function editFormUsers($id){
+function editFormUsers(int $id) : array
+{
 
     $db = new Database;
     $db = $db->dbConnect();
@@ -36,11 +31,16 @@ function editFormUsers($id){
 //en $_POST
 /** admin insert le contenu modifier du user 
  * 
- * @param string/int
+ * @param string
+ * @param string
+ * @param string
+ * @param string
+ * @param int
  * 
  * @return void
 */
-function editUsers($first_name, $last_name, $email, $password, $id){
+function editUsers(string $first_name, string $last_name, string $email, string $password, int $id) : void
+{
 
     $db = new Database;
     $db = $db->dbConnect();
@@ -54,11 +54,10 @@ function editUsers($first_name, $last_name, $email, $password, $id){
 
     $editUsers = $db->prepare($sql);
     $editUsers = $editUsers->execute([
-
-        ':id' => $id,
+        ':id'         => $id,
         ':first_name' => $first_name, 
-        ':last_name' => $last_name, 
-        ':mail' => $email,
-        ':password' => $passwordHashed
+        ':last_name'  => $last_name, 
+        ':mail'       => $email,
+        ':password'   => $passwordHashed
     ]);
 }

@@ -1,18 +1,17 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
-
 
 /** admin ajoute un user 
  * 
  * @param string
+ * @param string
+ * @param string
+ * @param string
  * 
- * @return void/array
+ * @return void|array
 */
-function addUsers($first_name, $last_name, $email, $password){
-
+function addUsers(string $first_name, string $last_name, string $email, string $password) : ?array
+{
     $db = new Database;
     $db = $db->dbConnect();
 
@@ -33,24 +32,20 @@ function addUsers($first_name, $last_name, $email, $password){
             throw new PDOException(("Un utilisateur existe déjà avec cet email."));
         }
 
-
         /* si le mail n'existe pas déjà dans la bdd lors de l'inscription, c'est bon , on peut hashé le mot de passe */
         $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-
 
         // et on peut ajouter le nouvelle utilisateur dans la base de donnée
         $sql = "INSERT INTO user (first_name, last_name, mail, password) VALUE(:first_name, :last_name, :mail, :password)";
 
         $user = $db->prepare($sql);
         $user = $user->execute([
-
             ':first_name' => $first_name, 
-            ':last_name' => $last_name, 
-            ':mail' => $email, 
-            ':password' => $passwordHashed
+            ':last_name'  => $last_name, 
+            ':mail'       => $email, 
+            ':password'   => $passwordHashed
         ]);
 
         return $userExist; 
     }
-
 }
