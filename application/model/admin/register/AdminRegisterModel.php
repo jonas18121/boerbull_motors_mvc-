@@ -1,18 +1,17 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 
 /** register  /INSCRIPTION 
  * 
- * @param string
+ * @param string $name
+ * @param string $email
+ * @param string $password
  * 
- * @return void/array
+ * @return void|array
 */
-function registerAdmin($name, $email, $password){
-    //connexion à la bdd
+function registerAdmin(string $name, string $email, string $password) : ?array
+{
     $db = new Database;
     $db = $db->dbConnect();
 
@@ -48,8 +47,8 @@ function registerAdmin($name, $email, $password){
         $admin = $db->prepare($sql);
         $admin = $admin->execute([
 
-            ':name' => $name, 
-            ':mail' => $email, 
+            ':name'     => $name, 
+            ':mail'     => $email, 
             ':password' => $passwordHashed
         ]);
 
