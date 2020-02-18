@@ -3,10 +3,10 @@ require_once 'config/DataBase.php';
 
 /** admin ajoute un user 
  * 
- * @param string
- * @param string
- * @param string
- * @param string
+ * @param string $first_name
+ * @param string $last_name
+ * @param string $email
+ * @param string $password
  * 
  * @return void|array
 */
