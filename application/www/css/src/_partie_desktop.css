@@ -1,17 +1,6 @@
-/***********css par défaut mobile ********************/
-
-/* la base depuis mobile */
-@import 'src/_base.css';
-@import 'src/_partie_mobile.css';
-
-/* **************** css pour TABLETTE *********************** */
-@import 'src/_partie_tablette.css';
-
-
 /* **********css pour desktop home******************* */
 
 @media screen and (min-width:1025px){
-
 
     nav>ul>li, .plogo>a>img, .entreprise, .divCategory a, .divCategory, .adminGetCar{
         display: inline-block;
@@ -27,10 +16,7 @@
         display:block;
     }
 
-
-
     /* /////////// H E A D E R ////////////// */
-    
     
     
     nav{
@@ -76,10 +62,6 @@
         text-align: center;
         margin:0 0 3rem;
     }  
-    
-    
-    
-    
     
     /* /////////// M A I N ////////////// */
 
