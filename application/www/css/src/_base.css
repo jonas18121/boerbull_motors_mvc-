@@ -1,0 +1,72 @@
+/* base depuis mobile */
+
+/* GLOBAL */
+
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem; 
+    width: 100%;
+    background-color: black;
+}
+
+img, video, table{
+    max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+    margin: 0.2rem;
+}
+
+table{
+    width: 100%;
+}
+
+input{
+    margin: 1rem 1rem 1rem 0;
+}
+
+p{
+    margin: 0;
+}
+
+button, .myValid, .nosAgence, .prixTTC{
+    background-color: #f6dc12;
+    border-color: #f6dc12;
+}
+
+button,button a, .myValid, .prixTTC{
+    color: #fff;
+}
+
+.divBar, .sectionUniversel, .sectionUniversel2, .sectionApropos{
+    background-color: #fff;  
+}
+
+.entreprise, nav li, .sectionUniversel, .sectionUniversel2, footer{
+    text-align: center;
+}
+
+.divBar nav>a , h2, h3, p, a, .entreprise, .divCategory>a, .myStatCar, .adminGetCar{
+    color: #354950; 
+    font-weight: bold;
+    
+}
+
+.divScroll{
+    overflow-x: scroll;
+}
+
+
+nav a, nav > ul::after, .entreprise, .adminAddCar, .carView{
+    display: block;
+}

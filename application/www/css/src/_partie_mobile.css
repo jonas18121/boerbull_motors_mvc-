@@ -1,0 +1,173 @@
+/***********css par défaut mobile ********************/
+
+/* /////////// H E A D E R ////////////// */
+
+
+nav{
+    font-size: 3rem;
+    margin-top: 4rem;
+}
+
+nav a{
+    font-size: 2.5rem;
+    padding: 2.5rem;
+}
+
+
+
+h1{
+    font-size: 5.6rem;
+    letter-spacing: 4.5rem;
+    color: #354950;
+}
+
+/* menu et sous menu */
+nav ul{
+
+    margin-bottom: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+}
+
+
+nav > ul::after{
+    content: "";
+    clear: both;
+}
+
+nav li, li {
+    list-style-type: none;
+}
+
+nav .menu{
+    position: relative;
+}
+
+nav li:hover .sous_menu{
+    display: inline-block;
+    position: absolute;
+    top: 4rem;
+    left: 6rem;
+    padding: 0rem;
+    z-index: 100000;
+    background-color: mintcream;
+} 
+
+.sous_menu {
+    display: none;
+} 
+
+.sous_menu li{
+    border-bottom: 0.1rem solid #CCC;
+}
+
+
+
+
+.divBar{
+    padding: 0 0 2rem;
+}
+
+
+
+.entreprise{
+    font-size: 5rem;
+    margin: 0;
+}
+
+
+.plogo>a>img{
+    display: none;
+}
+
+
+/* /////////// M A I N ////////////// */
+
+
+h2{
+    font-size: 3rem;
+    background: linear-gradient(to right, #f6dc12, white);
+    width: 70%;
+    margin: 0 auto 1rem;
+}
+
+h3{
+    font-size: 2.5rem;
+    text-transform: capitalize;
+}
+
+.divNosCar > article > a >img{
+    width: 100%;
+}
+
+
+
+.sectionUniversel, .sectionUniversel2{
+    padding: 1rem;
+    margin: 3rem;
+}
+
+
+.sectionUniversel p{
+    text-align: left;
+}
+
+
+.sectionUniversel fieldset{
+    display: inline;
+}
+
+.nosAgence{
+    margin: 1rem 4rem;
+    padding: 1rem;
+
+}
+
+
+.imgBack{
+    display: none;
+}
+
+/* ****** ADMIN GET CAR ************ */
+
+.adminGetCar{
+    background-color: darkgrey;
+    margin: 1rem;
+}
+
+
+/* ****** PAGE CATEGORY ********** */
+.divCategory, .adminGetCar{
+    display: inline-block;
+}
+
+
+/* ********* ONE CAR VIEW ************ */
+
+.myImgOneCar{
+    width: 100%;
+} 
+
+
+
+/* ********* USER BOOKING FORM ************ */
+.prixTTC{
+    margin: 1rem auto;
+    width: max-content;
+    border: 0.1rem solid #f6dc12;
+}
+
+
+
+/* /////////// F O O T E R ////////////// */
+
+footer{
+    padding: 1rem;
+    background-color: #101010;
+}
+
+
+.navBar>a, footer p{
+    color: #f6dc12;
+}
+

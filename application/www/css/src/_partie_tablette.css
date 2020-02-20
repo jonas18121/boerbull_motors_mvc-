@@ -1,0 +1,20 @@
+/* **************** css pour TABLETTE *********************** */
+@media screen and (min-width: 500px) {
+
+    /* /////////// H E A D E R ////////////// */
+
+   
+   nav li:hover .sous_menu{
+       top: 4rem;
+       left: 24rem;
+   } 
+
+   .divNosCar > article{
+       display: inline-block;
+       width: 60%;
+       margin: 2rem 3rem;
+   }
+
+   /* /////////// M A I N ////////////// */
+   /* /////////// F O O T E R ////////////// */
+}
