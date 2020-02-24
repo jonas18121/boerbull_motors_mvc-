@@ -1,20 +1,14 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 /** admin supprime son compte 
- * 
- * @param int
- * 
+ * @param int $id
  * @return void
 */
-function deleteSelfAdmin($id){
-
+function deleteSelfAdmin(int $id) : void
+{
     $db = new Database;
     $db = $db->dbConnect();
-
     $sql = "DELETE FROM boerbull_admin WHERE id = :id ";
 
     $deleteUser = $db->prepare($sql);
