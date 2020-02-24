@@ -1,15 +1,12 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
 
 /** Afficher tous les cars 
- * 
  * @return array
 */
-function GetCars(){
+function GetCars() : array
+{
     
     $db = new Database;
     $db = $db->dbConnect();
