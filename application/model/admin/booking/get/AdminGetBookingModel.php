@@ -1,16 +1,11 @@
 <?php
-//model , gestion de la base de donnée
-
-//inclure la bdd
 require_once 'config/DataBase.php';
 
-
 /** Afficher tous les cars 
- * 
  * @return array
 */
-function findBooking(){
-    
+function findBooking() : array
+{    
     $db = new Database;
     $db = $db->dbConnect();
 
@@ -19,6 +14,5 @@ function findBooking(){
         INNER JOIN user ON user.id = booking.user_i ";
     $adminGetBooking = $db->query($sql);
     $adminGetBooking = $adminGetBooking->fetchAll();
-
     return $adminGetBooking;
 }
