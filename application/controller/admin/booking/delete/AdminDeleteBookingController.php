@@ -1,6 +1,7 @@
 <?php
 require_once 'model/admin/booking/delete/AdminDeleteBookingModel.php';
 require_once 'aSession/AdminSession.php';
+require_once 'aSession/AdminSession.php';
 require_once 'library/Tools.php';
 
 
