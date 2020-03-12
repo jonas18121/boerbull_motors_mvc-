@@ -12,7 +12,6 @@ function adminDeleteBooking() : void
     if(!isAuthenticatedAdmin()){
         redirect("index.php");
     }
-
     deleteBookingAdmin((int)$_GET['id']);
     redirect("index.php?action=admin&action2=booking&action3=get");
 }
