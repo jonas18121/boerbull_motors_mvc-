@@ -5,6 +5,20 @@
 <section  class='sectionUniversel'>
     <h2>Inscription</h2>
 
+    <?php
+
+if (isset($erreur)) {
+    if (count($erreur)) {
+        echo '<ul>';
+        for ($i=0; $i < count($erreur) ; $i++) { 
+            echo '<li> ' . $erreur[$i] . '</li>'; 
+        }
+        echo '</ul>';
+    }
+}
+
+?>
+
     <form action="index.php?action=user&action2=register" method="post" name="formulaire">
 
         <div>

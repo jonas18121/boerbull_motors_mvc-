@@ -55,7 +55,7 @@
     
     /* ////// IMAGE D'ACCUEIL ////// */
     .imgBack{
-        background-image: url('../imgBoerbullMotors/back.jpg');
+        background-image: url('../../imgBoerbullMotors/back.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         padding: 20rem 0 70rem;
