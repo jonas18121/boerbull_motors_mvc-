@@ -34,6 +34,7 @@ function userRegister()
                                 } 
                             }
                         }
+                        $erreur[] = 'Le mot de passe doit avoir au moins 8 caractères';
                     }
                 }
             }
