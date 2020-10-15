@@ -12,8 +12,8 @@ class Database{
      */
     public static function dbConnect(){
         $dsn = 'mysql:host=localhost;dbname=boerbull_motors';
-        $user= 'stagiaire';
-        $password = 'dawan';
+        $user = 'root';
+        $password = '';
 
         try {
             // design pattern singleton, pour qu'une seul connexion à la bdd, suffise pour toutes les requètes SQL qu'on va faire dans le site

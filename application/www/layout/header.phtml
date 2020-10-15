@@ -100,3 +100,16 @@ if (session_status() === PHP_SESSION_NONE) {
         </nav>   
     </header>
     <main>
+<?php
+
+if (isset($erreur)) {
+    if (count($erreur)) {
+        echo '<ul>';
+        for ($i=0; $i < count($erreur) ; $i++) { 
+            echo '<li> ' . $erreur[$i] . '</li>'; 
+        }
+        echo '</ul>';
+    }
+}
+
+?>
