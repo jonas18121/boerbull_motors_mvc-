@@ -123,3 +123,30 @@ function connect_bdd(string $host, string $username, string $password, string $d
 
     return $link;
 }
+
+
+////////////////////////// pagination //////////////////////////////////////////
+
+/**
+ * On détermine sur quelle page on se trouve
+ * 
+ * @param int $get
+ * 
+ * @return int $current_page
+ */
+function get_current_page(int $get) : int
+{
+    if(isset($get) && !empty($get))
+    {
+        $current_page = (int) strip_tags($get);   
+    }
+    else{
+        $current_page = 1;
+    }
+
+    return $current_page;
+}
+
+
+
+////////////////////////// fin de pagination //////////////////////////////////////////

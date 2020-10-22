@@ -52,9 +52,13 @@ function findAllo() :array
 }
 
 /**
- * compter le nombre de voiture dans une categorie
+ * acutellement compter le nombre de voiture dans une categorie
+ * 
+ * 
+ * 
+ * @return string
  */
-function nb_car(int $category)  : string
+function nb_xxx(int $category)  : string
 {
     $db = new Database;
     $db = $db->dbConnect();
