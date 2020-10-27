@@ -16,21 +16,23 @@
     </div>
     
     <!-- pagination -->
-    <div>
-        <span style="display: <?= ($current_page === 1) ? 'none' : '' ?>">
-            <a href="index.php?action=category&id_category=<?= $_GET['id_category'] ?>&page=<?= $current_page - 1 ?>" > << Précédente</a>
-        </span>
-    
-        <?php for ($page=1; $page <= $nb_pages ; $page++) : ?>
-            <span <?= ($current_page === $page) ? 'active' : '' ?> >
-                <a href="index.php?action=category&id_category=<?= $_GET['id_category'] ?>&page=<?= $page ?>" ><?= $page ?></a>
+    <?php if($nb_pages > 1) : ?>
+        <div>
+            <span style="display: <?= ($current_page === 1) ? 'none' : '' ?>">
+                <a href="index.php?action=category&id_category=<?= $_GET['id_category'] ?>&page=<?= $current_page - 1 ?>" > << Précédente</a>
             </span>
-        <?php endfor ?>
-    
-        <span style="display:<?= ($current_page === $nb_pages) ? 'none' : '' ?>">
-            <a href="index.php?action=category&id_category=<?= $_GET['id_category'] ?>&page=<?= $current_page + 1 ?>" >Suivante >> </a>
-        </span>
-    </div>
+        
+            <?php for ($page=1; $page <= $nb_pages ; $page++) : ?>
+                <span <?= ($current_page === $page) ? 'active' : '' ?> >
+                    <a href="index.php?action=category&id_category=<?= $_GET['id_category'] ?>&page=<?= $page ?>" ><?= $page ?></a>
+                </span>
+            <?php endfor ?>
+        
+            <span style="display:<?= ($current_page === $nb_pages) ? 'none' : '' ?>">
+                <a href="index.php?action=category&id_category=<?= $_GET['id_category'] ?>&page=<?= $current_page + 1 ?>" >Suivante >> </a>
+            </span>
+        </div>
+    <?php endif ?>
 </section>
 <!-- fermer la tamporisation de sortie et le mettre dans une variable -->
 <?php $content = ob_get_clean(); ?>
