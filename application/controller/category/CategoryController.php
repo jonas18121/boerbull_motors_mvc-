@@ -16,7 +16,7 @@ function getOneCategory()
     $current_page       = get_current_page($_GET['page']);
     $nb_car             = nb_xxx($id_category);
     $nb_car_par_page    = 6;
-    $nb_pages           = (int) floor($nb_car / $nb_car_par_page);
+    $nb_pages           = (int) ceil($nb_car / $nb_car_par_page);
     $premier            = ($current_page * $nb_car_par_page) - $nb_car_par_page;
     
     //appel de la fontion du model
