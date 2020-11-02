@@ -16,11 +16,11 @@ function redirect($url){
  * 
  * @param mixed $param1 - Tous les types de param sont accepter
  * @param mixed $param2 - (facultative) Tous les types de param sont accepter
- * @param bool $param3  - activer ou pas, la function die()
+ * @param bool $param3  - sur false par défault , permet d'activer ou pas, la function die()
  * 
- * @return void - retourn la valeur de var_dump
+ * @return void - retourne la valeur de var_dump
  */
-function pre_var_dump($param1, $param2 = null, $param3 = false) : void
+function pre_var_dump($param1, $param2 = null, bool $param3 = false) : void
 {
     if ($param3 === false) {
         
@@ -85,7 +85,7 @@ function get_erreur($erreur)
  * faire une redirection
  * 
  * @param string $url - url de destination
- * @param bool $bool 
+ * @param bool $bool  - sur true par défault , permet d'activer ou pas, la function exit()
  * 
  * @return void
  */
@@ -103,7 +103,7 @@ function header_location(string $url, bool $bool = true) : void
 /**
  * connexion à la base de donnée
  * 
- * @param string $host - nom d'hôte ou une adresse IP, exemple : "127.0.0.1"
+ * @param string $host     - nom d'hôte ou une adresse IP, exemple : "127.0.0.1"
  * @param string $username - nom d'utilisateur MySQL
  * @param string $password - mot de passe
  * @param string $database - nom de la base de données par défaut à utiliser lors de l'exécution de requêtes
