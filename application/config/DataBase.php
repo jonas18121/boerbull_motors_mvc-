@@ -1,9 +1,8 @@
 <?php
 
 
-class Database{
-
-
+class Database
+{
     private static $instance = null;
 
     /** on ce connecte à la base de donnée
