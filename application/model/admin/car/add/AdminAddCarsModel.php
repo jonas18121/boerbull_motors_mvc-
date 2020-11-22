@@ -17,7 +17,7 @@ require_once 'config/DataBase.php';
  * @param int $cent
  * @return void  
  */ 
-function addCars(string $marque, string $modele, int $annee, int $conso, string $color, int $prix_trois_jours, int $puissance, string $moteur, string $carburant, int $cent, int $nombre_de_place, int $id_category, string $image_url) :void
+function addCars(string $marque, string $modele, int $annee, int $conso, string $color, int $prix_trois_jours, int $puissance, string $moteur, string $carburant, int $cent, int $nombre_de_place, int $id_category, string $image_url = null) :void
 {
     $db = new Database;
     $db = $db->dbConnect();
