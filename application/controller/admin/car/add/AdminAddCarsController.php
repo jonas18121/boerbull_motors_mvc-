@@ -57,67 +57,14 @@ function adminAddCars(){
                                                         
                                                         // if(array_key_exists('image_url',$_POST) && isset($_POST['image_url'])){
                                                         if(array_key_exists('image_url',$_FILES) && isset($_FILES['image_url']) && !empty($_FILES['image_url'])){
-                                                                // pre_var_dump( 'L 34 AdminAddCarsController.php' , $_FILES, true);
 
                                                             // Upload and Rename File
                                                             $filename = $_FILES["image_url"]["name"];
-                                                            $file_basename = substr($filename, 0, strripos($filename, '.')); // on récupère que le nom du fichier sans l'extention
-        
-                                                            $file_ext = substr($filename, strripos($filename, '.')); // on récupère l'extention sans le nom du fichier
-
-                                                            $filesize = $_FILES["image_url"]["size"];
-
-                                                            $rand = rand(0, 100000000);
-                                                            $rand2 = rand(0, 100000000);
-
-                                                            //pre_var_dump( $filename , null, true);
-                                                            $allowed_file_types = array('.doc','.docx','.rtf','.pdf', '.gif', '.jpg', '.png', '.PNG', '.jpeg');	
-                                                        
-                                                            if (in_array($file_ext, $allowed_file_types) && ($filesize < 200000))
-                                                            {	
-                                                                $first_filename = $file_basename . $file_ext;
-                                                                // $date = date('NOW');
-                                                                $date = new DateTime('now');
-                                                                $date = $date->format('Y_m_d_H_i_s');
-
-                                                                //pre_var_dump($date, null, true);
-
-                                                                if (file_exists("www/imgBoerbullMotors/" . $first_filename))
-                                                                {
-                                                                    $change = "change {$date} {$rand2} and {$file_basename} plz";
-                                                                    // si le fichier existe déjà, on renomme le fichier
-                                                                    $new_filename = md5($change) . $file_ext;
-
-                                                                    //pre_var_dump($date,null,true);
-                                                                    //$date = date('NOW');
-
-                                                                    $good_img = $rand . '_' . $date . $new_filename;
-                                                                    
-                                                                    move_uploaded_file($_FILES["image_url"]["tmp_name"], "www/imgBoerbullMotors/" . $good_img );
-                                                                    echo "success le fichier a été renomé et ajouter car il existe déjà dans ce dossier.";
-                                                                }
-                                                                else
-                                                                {		
-                                                                    $good_img = $first_filename;
-                                                                    move_uploaded_file($_FILES["image_url"]["tmp_name"], "www/imgBoerbullMotors/" . $good_img);
-                                                                    echo "success le fichier est bien ajouter.";		
-                                                                }
+                                                            
+                                                            $good_img = upload_file($filename);
+                                                            if (empty($good_img)) {
+                                                                redirect("index.php?action=admin&action2=car&action3=addForm");
                                                             }
-                                                            elseif (empty($file_basename))
-                                                            {	
-                                                                echo "selectionne un fichier";
-                                                            } 
-                                                            elseif ($filesize > 200000)
-                                                            {	
-                                                                echo "Le fichier est trop large";
-                                                            }
-                                                            else
-                                                            {
-                                                                echo "Le fichier doit avoir l'un de ces extentions : " . implode(', ',$allowed_file_types);
-                                                                unlink($_FILES["image_url"]["tmp_name"]);
-                                                            }
-                                                            //pre_var_dump('L 111 AdminAddCarsController.php' , 'cest ok', true);
-
 
 
                                                             addCars((string)$_POST['marque'], (string)$_POST['modele'], (int)$_POST['annee'], (int)$_POST['conso'], (string)$_POST['color'], (int)$_POST['prix_trois_jours'], (int)$_POST['puissance'], $_POST['moteur'], (string)$_POST['carburant'], (int)$_POST['cent'], (int)$_POST['nombre_de_place'], (int)$_POST['id_category'], (string) $good_img);
@@ -142,4 +89,56 @@ function adminAddCars(){
                             
 
     redirect("index.php?action=admin&action2=car&action3=addForm");
+}
+
+function upload_file($filename){
+
+    $file_basename = substr($filename, 0, strripos($filename, '.')); // on récupère que le nom du fichier sans l'extention
+
+    $file_ext = substr($filename, strripos($filename, '.')); // on récupère l'extention sans le nom du fichier
+
+    $filesize = $_FILES["image_url"]["size"];
+
+    $rand = rand(0, 100000000);
+    $rand2 = rand(0, 100000000);
+
+    $allowed_file_types = array('.doc','.docx','.rtf','.pdf', '.gif', '.jpg', '.png', '.PNG', '.jpeg');	
+
+    if (in_array($file_ext, $allowed_file_types) && ($filesize < 200000))
+    {	
+        $first_filename = $file_basename . $file_ext;
+        
+        $date = new DateTime('now');
+        $date = $date->format('Y_m_d_H_i_s');
+
+        if (file_exists("www/imgBoerbullMotors/" . $first_filename))
+        {
+            
+            // si le fichier existe déjà, on renomme le fichier
+            $change         = "change {$date} {$rand2} and {$file_basename} plz";
+            $new_filename   = md5($change) . $file_ext;
+            $good_img       = $rand . '_' . $date . $new_filename;
+            
+            move_uploaded_file($_FILES["image_url"]["tmp_name"], "www/imgBoerbullMotors/" . $good_img );
+            echo "success le fichier a été renomé et ajouter car il existe déjà dans ce dossier.";
+        }
+        else
+        {		
+            $good_img = $first_filename;
+            move_uploaded_file($_FILES["image_url"]["tmp_name"], "www/imgBoerbullMotors/" . $good_img);
+            echo "success le fichier est bien ajouter.";		
+        }
+        return $good_img;
+    }
+    elseif ($filesize > 200000)
+    {	
+        echo "Le fichier est trop large";
+    }
+    else
+    {
+        echo "Le fichier doit avoir l'un de ces extentions : " . implode(', ',$allowed_file_types);
+        unlink($_FILES["image_url"]["tmp_name"]);
+    }
+
+    return $good_img = '';
 }

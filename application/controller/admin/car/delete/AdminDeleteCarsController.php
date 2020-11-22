@@ -15,7 +15,7 @@ function adminDeleteCars(){
         redirect("index.php");
     }
     
-    // Avec $_GET, on recupère la valeur de l'id et le nom de l'image qui sont dans l'url 
+    // Avec $_GET, on recupère la valeur de l'id et la valeur de l'image qui sont dans l'url 
     deleteCar((int)$_GET['id']);
     unlink("www/imgBoerbullMotors/" . $_GET['image']);
     
