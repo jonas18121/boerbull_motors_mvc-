@@ -10,9 +10,6 @@
         <div class='adminGetCar'>
             <a href="index.php?action=oneCar&id=<?= htmlspecialchars(htmlentities($value['id'])) ?>">
 
-                <!-- <img src="www/imgBoerbullMotors/<?= htmlspecialchars(htmlentities($value['image_url'])) ?>" height="250" width="350"
-                    alt="<?= htmlspecialchars(utf8_encode($value['modele'])) ?>" class="adminAddCarView"> -->
-
                 <img src="www/imgBoerbullMotors/<?= htmlspecialchars(htmlentities($value['image_url'])) ?>" height="250" width="350"
                     alt="<?= htmlspecialchars(utf8_encode($value['modele'])) ?>" class="adminAddCarView">
 
@@ -26,7 +23,6 @@
 
                         <button>
                             <a href="index.php?action=admin&action2=car&action3=delete&id=<?= $value['id'] ?>&image=<?= $value['image_url'] ?>" onclick="return confirmeDelete('car')">
-                                <?php //unlink('www/imgBoerbullMotors/' . $value['image_url']) ?>
                                 supprimer
                             </a>
                         </button>        
