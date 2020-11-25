@@ -39,7 +39,7 @@ function adminAddCars(){
                     
                     if(array_key_exists('conso',$_POST) && isset($_POST['conso']) && ctype_digit($_POST['conso']) && strlen($_POST['conso']) < 4){
                         
-                        if(array_key_exists('color',$_POST) && isset($_POST['color']) && ctype_alpha($_POST['color'])){
+                        if(array_key_exists('color',$_POST) && isset($_POST['color'])){
                             
                             if(array_key_exists('prix_trois_jours',$_POST) && isset($_POST['prix_trois_jours']) && ctype_digit($_POST['prix_trois_jours']) && strlen($_POST['prix_trois_jours']) < 5){
                                 
@@ -91,7 +91,7 @@ function adminAddCars(){
     redirect("index.php?action=admin&action2=car&action3=addForm");
 }
 
-function upload_file($filename){
+/* function upload_file($filename){
 
     $file_basename = substr($filename, 0, strripos($filename, '.')); // on récupère que le nom du fichier sans l'extention
 
@@ -141,4 +141,4 @@ function upload_file($filename){
     }
 
     return $good_img = '';
-}
+} */

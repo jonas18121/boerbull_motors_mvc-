@@ -42,34 +42,37 @@ function editFormCars(int $id) : array
  * @param string $nombre_de_place
  * @param int $id_category
  * @param int $id
+ * @param string $image_url
  * 
  * @return void
 */
-function editCars(string $marque, string $modele, int $anne, string $conso, string $color, int $prix_trois_jours, string $puissance, string $moteur, string $carburant, int $cent, int $nombre_de_place, int $id_category, int $id) : void
+function editCars(string $marque, string $modele, int $anne, string $conso, string $color, int $prix_trois_jours, string $puissance, string $moteur, string $carburant, int $cent, int $nombre_de_place, int $id_category, int $id, string $image_url) : void
 {
 
     $db = new Database;
     $db = $db->dbConnect();
+    
 
     // requète pour modifier un car précis
     $sql = "UPDATE car SET marque = :marque, modele = :modele, annee = :annee, conso = :conso, color = :color, prix_trois_jours = :prix_trois_jours, 
-        puissance = :puissance, moteur = :moteur, carburant = :carburant, cent = :cent, nombre_de_place = :nombre_de_place, id_category = :id_category WHERE id = :id";
+        puissance = :puissance, moteur = :moteur, carburant = :carburant, cent = :cent, nombre_de_place = :nombre_de_place, id_category = :id_category, image_url = :image_url WHERE id = :id";
 
         $editCar = $db->prepare($sql);
         $editCar->execute([
 
-            ':marque' => $marque, 
-            ':modele' => $modele, 
-            ':annee' => $anne,
-            ':conso' => $conso,
-            ':color' => $color,
+            ':marque'           => $marque, 
+            ':modele'           => $modele, 
+            ':annee'            => $anne,
+            ':conso'            => $conso,
+            ':color'            => $color,
             ':prix_trois_jours' => $prix_trois_jours,
-            ':puissance' => $puissance,
-            ':moteur' => $moteur,
-            ':carburant' => $carburant,
-            ':cent' => $cent,
-            ':nombre_de_place' => $nombre_de_place,
-            ':id_category' => $id_category,
-            ':id' => $id
+            ':puissance'        => $puissance,
+            ':moteur'           => $moteur,
+            ':carburant'        => $carburant,
+            ':cent'             => $cent,
+            ':nombre_de_place'  => $nombre_de_place,
+            ':id_category'      => $id_category,
+            ':id'               => $id,
+            ':image_url'        => $image_url
         ]);
 }
