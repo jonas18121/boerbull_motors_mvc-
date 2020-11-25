@@ -30,19 +30,19 @@ function addCars(string $marque, string $modele, int $annee, int $conso, string 
         
     $addCar->execute([
 
-        ':marque' => $marque, 
-        ':modele' => $modele, 
-        ':annee' => $annee,
-        ':conso' => $conso,
-        ':color' => $color,
+        ':marque'           => $marque, 
+        ':modele'           => $modele, 
+        ':annee'            => $annee,
+        ':conso'            => $conso,
+        ':color'            => $color,
         ':prix_trois_jours' => $prix_trois_jours,
-        ':puissance' => $puissance,
-        ':moteur' => $moteur,
-        ':carburant' => $carburant,
-        ':cent' => $cent,
-        ':nombre_de_place' => $nombre_de_place,
-        ':id_category' => $id_category, 
-        ':image_url' => $image_url
+        ':puissance'        => $puissance,
+        ':moteur'           => $moteur,
+        ':carburant'        => $carburant,
+        ':cent'             => $cent,
+        ':nombre_de_place'  => $nombre_de_place,
+        ':id_category'      => $id_category, 
+        ':image_url'        => $image_url
     ]);
 }
 
