@@ -150,3 +150,59 @@ function get_current_page(int $get) : int
 
 
 ////////////////////////// fin de pagination //////////////////////////////////////////
+
+
+
+//////////////////// uploal_file
+
+function upload_file($filename){
+
+    $file_basename = substr($filename, 0, strripos($filename, '.')); // on récupère que le nom du fichier sans l'extention
+
+    $file_ext = substr($filename, strripos($filename, '.')); // on récupère l'extention sans le nom du fichier
+
+    $filesize = $_FILES["image_url"]["size"];
+
+    $rand = rand(0, 100000000);
+    $rand2 = rand(0, 100000000);
+
+    $allowed_file_types = array('.doc','.docx','.rtf','.pdf', '.gif', '.jpg', '.png', '.PNG', '.jpeg');	
+
+    if (in_array($file_ext, $allowed_file_types) && ($filesize < 1200000))
+    {	
+        $first_filename = $file_basename . $file_ext;
+        
+        $date = new DateTime('now');
+        $date = $date->format('Y_m_d_H_i_s');
+
+        if (file_exists("www/imgBoerbullMotors/" . $first_filename))
+        {
+            
+            // si le fichier existe déjà, on renomme le fichier
+            $change         = "change {$date} {$rand2} and {$file_basename} plz";
+            $new_filename   = md5($change) . $file_ext;
+            $good_img       = $rand . '_' . $date . $new_filename;
+            
+            move_uploaded_file($_FILES["image_url"]["tmp_name"], "www/imgBoerbullMotors/" . $good_img );
+            echo "success le fichier a été renomé et ajouter car il existe déjà dans ce dossier.";
+        }
+        else
+        {		
+            $good_img = $first_filename;
+            move_uploaded_file($_FILES["image_url"]["tmp_name"], "www/imgBoerbullMotors/" . $good_img);
+            echo "success le fichier est bien ajouter.";		
+        }
+        return $good_img;
+    }
+    elseif ($filesize > 1200000)
+    {	
+        echo "Le fichier est trop large";
+    }
+    else
+    {
+        echo "Le fichier doit avoir l'un de ces extentions : " . implode(', ',$allowed_file_types);
+        unlink($_FILES["image_url"]["tmp_name"]);
+    }
+
+    return $good_img = '';
+}
