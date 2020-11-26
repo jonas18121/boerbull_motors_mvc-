@@ -31,7 +31,7 @@ function adminAddCars(){
 
     //controle de formulaire en php
     if(!empty($_POST)){
-        if(array_key_exists('marque',$_POST) && isset($_POST['marque']) && ctype_alpha($_POST['marque']) && strlen($_POST['marque']) >= 2 && strlen($_POST['marque']) <= 25){
+        if(array_key_exists('marque',$_POST) && isset($_POST['marque']) && strlen($_POST['marque']) >= 2 && strlen($_POST['marque']) <= 25){
             
             if(array_key_exists('modele',$_POST) && isset($_POST['modele']) && strlen($_POST['modele']) >= 2 && strlen($_POST['modele']) <= 35){
                 
@@ -53,7 +53,7 @@ function adminAddCars(){
                                                 
                                                 if(array_key_exists('nombre_de_place',$_POST) && isset($_POST['nombre_de_place']) && ctype_digit($_POST['nombre_de_place']) && strlen($_POST['nombre_de_place']) === 1){
                                                     
-                                                    if(array_key_exists('id_category',$_POST) && isset($_POST['id_category']) && ctype_digit($_POST['nombre_de_place']) && strlen($_POST['nombre_de_place']) === 1){
+                                                    if(array_key_exists('id_category',$_POST) && isset($_POST['id_category']) && ctype_digit($_POST['id_category']) && strlen($_POST['id_category']) === 1){
                                                         
                                                         // if(array_key_exists('image_url',$_POST) && isset($_POST['image_url'])){
                                                         if(array_key_exists('image_url',$_FILES) && isset($_FILES['image_url']) && !empty($_FILES['image_url'])){

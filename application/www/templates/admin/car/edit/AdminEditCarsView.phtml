@@ -25,8 +25,11 @@
                 <li><strong>Prix pour 3 jours : </strong><?= htmlspecialchars(htmlentities($value['prix_trois_jours'])) ?> € hors taxe</li>
             </ul>
 
-    
-            <form action="index.php?action=admin&action2=car&action3=edit" method="post" name="formulaire" enctype="multipart/form-data">
+            <h3>Modifier</h3>
+
+            <div id="error"><span></span></div>
+
+            <form action="index.php?action=admin&action2=car&action3=edit" method="post" id="form_car" name="formulaire" enctype="multipart/form-data">
 
                 <div>
                     <input type="hidden" name="id" value="<?= $value['id'] ?>"> 
@@ -45,12 +48,12 @@
 
                 <div>
                     <label for="annee">Année : </label>
-                    <input type="text" name="annee" value="<?= $value['annee'] ?>" required>
+                    <input type="number" name="annee" value="<?= $value['annee'] ?>" required>
                 </div>
 
                 <div>
                     <label for="conso">Conso : </label>
-                    <input type="text" name="conso" value="<?= $value['conso'] ?>" required>
+                    <input type="number" name="conso" value="<?= $value['conso'] ?>" required>
                 </div>
 
                 <div>
@@ -60,7 +63,7 @@
 
                 <div>
                     <label for="puissance">Puissance : </label>
-                    <input type="text" name="puissance" value="<?= $value['puissance'] ?>" required>
+                    <input type="number" name="puissance" value="<?= $value['puissance'] ?>" required>
                 </div>
 
                 <div>
@@ -75,22 +78,22 @@
 
                 <div>
                     <label for="cent">0-100 KM : </label>
-                    <input type="text" name="cent" value="<?= $value['cent'] ?>" require>
+                    <input type="number" name="cent" value="<?= $value['cent'] ?>" require>
                 </div>
 
                 <div>
                     <label for="nombre_de_place">Nombre de place : </label>
-                    <input type="text" name="nombre_de_place" value="<?= $value['nombre_de_place'] ?>" required>
+                    <input type="number" name="nombre_de_place" value="<?= $value['nombre_de_place'] ?>" required>
                 </div>
 
                 <div>
                     <label for="id_category">Categorie : </label>
-                    <input type="text" name="id_category" value="<?= $value['id_category'] ?>" required>
+                    <input type="number" name="id_category" value="<?= $value['id_category'] ?>" required>
                 </div>
 
                 <div>
                     <label for="prix_trois_jours">Prix pour 3 jours : </label>
-                    <input type="text" name="prix_trois_jours" value="<?= $value['prix_trois_jours'] ?>" required>
+                    <input type="number" name="prix_trois_jours" value="<?= $value['prix_trois_jours'] ?>" required>
                 </div>
 
                 <div>
