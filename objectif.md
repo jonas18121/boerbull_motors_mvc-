@@ -6,3 +6,4 @@
     - jq validation
     - pagination
     - ajout des images via inptu type="file"
+    - table responsive

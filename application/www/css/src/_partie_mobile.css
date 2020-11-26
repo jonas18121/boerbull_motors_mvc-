@@ -157,7 +157,21 @@ h3{
     border: 0.1rem solid #f6dc12;
 }
 
+/* ********* Color Message error jq validation ****************** */
 
+label.error{
+    color: red;
+}
+
+div#error{
+    background-color: red;
+    text-align: center;
+}
+
+div#error span{
+    color: white;
+    font-size: 20px;
+}
 
 /* /////////// F O O T E R ////////////// */
 
@@ -165,7 +179,6 @@ footer{
     padding: 1rem;
     background-color: #101010;
 }
-
 
 .navBar>a, footer p{
     color: #f6dc12;
