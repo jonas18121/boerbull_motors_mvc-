@@ -148,6 +148,5 @@ $(function(){
                 required: 'Ce champ ne doit pas rester vide'
             },
         }
-
     });
 });
