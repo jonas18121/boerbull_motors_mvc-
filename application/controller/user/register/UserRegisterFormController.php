@@ -24,14 +24,16 @@ function userRegister()
                 if(array_key_exists('last_name',$_POST) && isset($_POST['last_name']) && ctype_alpha($_POST['first_name'])){
                     if(strlen($_POST['first_name']) >= 2 && strlen($_POST['first_name']) <= 40){
                         if(array_key_exists('password',$_POST) && isset($_POST['password']) && strlen($_POST['password']) >= 8){
-                            if(array_key_exists('mail',$_POST) && isset($_POST['mail'])){
-                                if(preg_match("/^[a-zA-Z][a-zA-Z0-9._-]{1,19}@[a-z]{4,7}\.[a-z]{2,3}$/", $_POST['mail'])){
-                                    //inscription user
-                                    registerUser((string)$_POST['first_name'] , (string)$_POST['last_name'], (string)$_POST['mail'], (string)$_POST['password']);
-
-                                    //redirection à la page de connexion pour user 
-                                    redirect('index.php?action=user&action2=loginForm');
-                                } 
+                            if ($_POST['password'] === $_POST['password_verif']) {
+                                if(array_key_exists('mail',$_POST) && isset($_POST['mail'])){
+                                    if(preg_match("/^[a-zA-Z][a-zA-Z0-9._-]{1,19}@[a-z]{4,7}\.[a-z]{2,3}$/", $_POST['mail'])){
+                                        //inscription user
+                                        registerUser((string)$_POST['first_name'] , (string)$_POST['last_name'], (string)$_POST['mail'], (string)$_POST['password']);
+    
+                                        //redirection à la page de connexion pour user 
+                                        redirect('index.php?action=user&action2=loginForm');
+                                    } 
+                                }
                             }
                         }
                         $erreur[] = 'Le mot de passe doit avoir au moins 8 caractères';
