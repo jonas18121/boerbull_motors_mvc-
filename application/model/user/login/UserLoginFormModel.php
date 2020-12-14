@@ -15,9 +15,9 @@ function loginUser(string $email, string $password) :array
 
     $sql = "SELECT * From user WHERE mail = :mail ";
 
-    $userExist = $db->prepare($sql);
-    $userExist->execute([':mail' => $email]);
-    $userExist = $userExist->fetch();
+    $stmt = $db->prepare($sql);
+    $stmt->execute([':mail' => $email]);
+    $userExist = $stmt->fetch();
 
     if(!$userExist){
         throw new PDOException(('User inconnu - cet email n\' existe pas'));
@@ -41,8 +41,8 @@ function userAll() : array
     $db = $db->dbConnect();
 
     $sql = 'SELECT * FROM user';
-    $userAll = $db->query($sql);
-    $userAll = $userAll->fetchAll();
+    $stmt = $db->query($sql);
+    $userAll = $stmt->fetchAll();
 
     return $userAll;
 }
