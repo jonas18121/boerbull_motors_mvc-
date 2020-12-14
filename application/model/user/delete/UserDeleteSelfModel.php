@@ -13,6 +13,6 @@ function deleteSelfUser(int $id) :void
 
     $sql = "DELETE FROM user WHERE id = :id ";
 
-    $deleteUser = $db->prepare($sql);
-    $deleteUser->execute([':id' => $id]);
+    $stmt = $db->prepare($sql);
+    $stmt->execute([':id' => $id]);
 }

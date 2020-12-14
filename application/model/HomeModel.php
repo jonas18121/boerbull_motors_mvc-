@@ -19,8 +19,8 @@ function findHome() :array
         GROUP BY category.id"
     ;
 
-    $home = $db->query($sql);
-    $home = $home->fetchAll();
+    $stmt = $db->query($sql);
+    $home = $stmt->fetchAll();
 
     return  $home;
 }
