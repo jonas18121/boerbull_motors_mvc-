@@ -18,11 +18,11 @@ function registerUser(string $first_name, string $last_name, string $email, stri
 
         $sql = "SELECT * From user WHERE mail = :mail ";
 
-        $userExist = $db->prepare($sql);
-        $userExist->execute([
+        $stmt = $db->prepare($sql);
+        $stmt->execute([
             ':mail' => $email
         ]);
-        $userExist = $userExist->fetchAll();
+        $userExist = $stmt->fetchAll();
         
         if($userExist){
             throw new PDOException(("Un utilisateur existe déjà avec cet email."));
@@ -32,8 +32,8 @@ function registerUser(string $first_name, string $last_name, string $email, stri
 
         $sql = "INSERT INTO user (first_name, last_name, mail, password) VALUE(:first_name, :last_name, :mail, :password)";
 
-        $user = $db->prepare($sql);
-        $user = $user->execute([
+        $stmt = $db->prepare($sql);
+        $user = $stmt->execute([
 
             ':first_name' => $first_name, 
             ':last_name' => $last_name, 

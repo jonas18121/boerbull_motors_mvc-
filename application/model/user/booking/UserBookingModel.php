@@ -14,10 +14,10 @@ function getBooking(int $user_i) :array
 
     $sql = "SELECT * FROM booking WHERE user_i = :user_i";
 
-    $getBooking = $db->prepare($sql);
-    $getBooking->execute(["user_i" => $user_i]);
+    $stmt = $db->prepare($sql);
+    $stmt->execute(["user_i" => $user_i]);
 
-    $getBooking = $getBooking->fetchAll();
+    $getBooking = $stmt->fetchAll();
 
     return $getBooking;
 }
@@ -35,8 +35,8 @@ function deleteBooking(int $id) :void
 
     $sql = "DELETE FROM booking WHERE id = :id";
 
-    $deleteOneBooking = $db->prepare($sql);
-    $deleteOneBooking->execute(array(
+    $stmt = $db->prepare($sql);
+    $stmt->execute(array(
         ':id' => $id
     ));
 }
