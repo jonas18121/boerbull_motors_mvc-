@@ -3,7 +3,7 @@
 $(function(){
 
     jQuery.validator.setDefaults({
-        debug: true, // avec true le formulaire n'est pas soumis
+        debug: false, // avec true le formulaire n'est pas soumis
         success: "valid"
     }); 
 
@@ -148,5 +148,87 @@ $(function(){
                 required: 'Ce champ ne doit pas rester vide'
             },
         }
+    });
+
+    // validation user
+    $("#form_user").validate({
+
+        submitHandler: function(form) {
+            form.submit();
+        },
+
+        invalidHandler: function(event, validator)
+        {
+            let errors = validator.numberOfInvalids();
+
+            if (errors) {
+                
+                let message = (errors == 1) ? 'Vous avez ' + errors + ' erreur à corriger' : 'Vous avez ' + errors + ' erreurs à corriger';
+                $('div#error span').html(message); 
+                $('div#error').show();
+            }
+            else{
+                $('div#error').hide();
+            }
+        },
+
+        rules:{
+            last_name: {
+                required: true,
+                minlength: 2,
+                maxlength: 40
+            },
+
+            first_name: {
+                required: true,
+                minlength: 2,
+                maxlength: 40
+            },
+
+            mail: {
+                required: true,
+                email: true
+            },
+
+            password: {
+                required: true,
+                minlength: 2
+            },
+
+            password_verif: {
+                required: true,
+                equalTo: '#password'
+            }
+        },
+
+        messages:{
+            last_name: {
+                required: 'Ce champ ne doit pas rester vide',
+                minlength: jQuery.validator.format('Il faut minimun 2 caractères !'),
+                maxlength: jQuery.validator.format('Il faut maximun 40 caractères !'),
+            },
+
+            first_name: {
+                required: 'Ce champ ne doit pas rester vide',
+                minlength: jQuery.validator.format('Il faut minimun 2 caractères !'),
+                maxlength: jQuery.validator.format('Il faut maximun 40 caractères !'),
+            },
+
+            mail: {
+                required: 'Ce champ ne doit pas rester vide',
+                email: ' Votre email doit ressembler a ceci xx@xxxx.xx au minimun de caractères'
+            },
+
+            password: {
+                required: 'Ce champ ne doit pas rester vide',
+                minlength:jQuery.validator.format('Il faut minimun 2 caractères !'),
+            },
+
+            password_verif: {
+                required: 'Ce champ ne doit pas rester vide',
+                equalTo: 'Le mot de passe de comfirmation ne doit pas être différent du champs mot de passe'
+            }
+        }
+
     });
 });
