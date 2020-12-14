@@ -19,7 +19,9 @@ if (isset($erreur)) {
 
 ?>
 
-    <form action="index.php?action=user&action2=register" method="post" name="formulaire">
+    <div id="error"><span></span></div>
+
+    <form action="index.php?action=user&action2=register" id="form_user" method="post" name="formulaire">
 
         <div>
             <label for='last_name'>Nom : </label>
@@ -47,8 +49,9 @@ if (isset($erreur)) {
         </div>
         
         <div>
-            <label for='password'>Confirmer mot de passe : </label>
-            <input type='password' name='password' placeholder="Mot de passe"  required="required">
+            <label for='password_verif'>Confirmer mot de passe : </label>
+            <input type='password' name='password_verif' id="password_verif" placeholder="Mot de passe"  required="required">
+            <span id="msgPassVerif"></span>
         </div>
 
         <div>
