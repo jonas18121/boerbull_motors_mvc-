@@ -27,7 +27,9 @@
             quand tous les champs sont remplis  -->
             <!-- onsubmit="bokingConfirme()" -->
         <form action="index.php?action=user&action2=booking" id="form_reservation" method="post">
+
             <fieldset>
+
                 <legend>Location de voitures</legend>
 
                 <div id="error"><span></span></div>
@@ -52,7 +54,7 @@
                     <label for="datetimepicker">Date de début</label>
                     <!-- class="datetimepicker" -->
                     <!-- <input type="date" name="datetimepicker"  placeholder="20/12/2019" required> -->
-                    <input type="text" name="datetimepicker" class="datetimepicker" id="date_debut"  placeholder="20/12/2019" required>
+                    <input type="text" name="datetimepicker" class="datetimepicker" id="date_debut"  placeholder="20/12/2019 09:00" required>
                 </div>
 
                 <div>
@@ -60,7 +62,7 @@
                     <label for="datetimepicker2">Date de fin</label>
                     <!-- class="datetimepicker" -->
                     <!-- <input type="date" name="datetimepicker2" placeholder="23/12/2019" required> -->
-                    <input type="text" name="datetimepicker2" class="datetimepicker" id="date_fin" placeholder="23/12/2019" required> 
+                    <input type="text" name="datetimepicker2" class="datetimepicker" id="date_fin" placeholder="23/12/2019 09:00" required> 
                 </div>
 
                 <div>
@@ -108,6 +110,7 @@
                 mask:true, // affiche un masque au champ de l'input exemple : _/_/____ __:__
 
                 theme:'white', // couleur du calendrier, il y a aussi 'dark'
+                
                 //Toutes les langues supportées ici
                 i18n:{
                     //on transforme et affiche les dates en français dans le calendrier
