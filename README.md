@@ -1,2 +1,2 @@
 # boerbull_motors_mvc
-site de location de voiture de luxe PHP/MVC
+Site de location de voiture de luxe en PHP procédurale avec une architecture MVC
