@@ -76,7 +76,7 @@ function userBookingForm(){
                             //récupéré les heures qui s'ajoutera après la date et s'affichera au 11èmes caractères 
                             $hourDebut = substr($_POST['datetimepicker'],11);
 
-                            
+                            //pre_var_dump('l 79 UserBookingFormController.php', $dateDebut, true);
 
 
                             //Récupéré la date de fin jusqu'a 10 caractères, EX : 2019-06-21

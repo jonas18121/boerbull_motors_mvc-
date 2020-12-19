@@ -229,6 +229,60 @@ $(function(){
                 equalTo: 'Le mot de passe de comfirmation ne doit pas être différent du champs mot de passe'
             }
         }
+    });
 
+    // validation reservation
+    $("#form_reservation").validate({
+
+        submitHandler: function(form) {
+            form.submit();
+        },
+
+        invalidHandler: function(event, validator)
+        {
+            let errors = validator.numberOfInvalids();
+
+            if (errors) {
+                
+                let message = (errors == 1) ? 'Vous avez ' + errors + ' erreur à corriger' : 'Vous avez ' + errors + ' erreurs à corriger';
+                $('div#error span').html(message); 
+                $('div#error').show();
+            }
+            else{
+                $('div#error').hide();
+            }
+        },
+
+        rules:{
+            datetimepicker: {
+                required: true,
+                // dateISO: true
+            },
+
+            datetimepicker2: {
+                required: true,
+                //dateISO: true
+            },
+
+            numberOfSeats: {
+                required: true,
+            },
+        },
+
+        messages:{
+            datetimepicker: {
+                required: 'Ce champ ne doit pas rester vide',
+                // dateISO: jQuery.validator.format('Le format de la date doit être dd/mm/yyyy hh:mm'),
+            },
+
+            datetimepicker2: {
+                required: 'Ce champ ne doit pas rester vide',
+                // dateISO: jQuery.validator.format('Le format de la date doit être dd/mm/yyyy hh:mm'),
+            },
+
+            numberOfSeats: {
+                required: 'Ce champ ne doit pas rester vide',
+            },
+        }
     });
 });
