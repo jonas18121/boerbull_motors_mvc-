@@ -7,6 +7,10 @@ class Database
 
     /** on ce connecte à la base de donnée
      * 
+     * host=db
+     * 
+     * service docker-compose db
+     * 
      * @return PDO
      */
     public static function dbConnect(){
