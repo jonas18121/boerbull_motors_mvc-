@@ -1,0 +1,10 @@
+/.env
+/.env.local
+/builds/
+/.cache/
+/.gitlab/
+/.local/
+/.config/
+/.bash_history
+
+/docker-compose.yml

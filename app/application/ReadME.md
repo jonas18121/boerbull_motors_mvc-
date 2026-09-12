@@ -10,8 +10,8 @@ Pour réaliser ce site j'ai utiliser les 5 languages demander pour valider le d�
 - [HTML],
 - [CSS],
 - [JAVASCRIPT],
-- [PHP],
-- [MYSQL].
+- [PHP] 7.2,
+- [MYSQL] 5.7.
 
 J'ai utiliser le framework [BOOTSTRAP] et la librairie [JQUERY] avec parcimonie, comme cela à été demander.
 
