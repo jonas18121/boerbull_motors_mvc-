@@ -7,6 +7,7 @@ require_once 'config/DataBase.php';
  */
 function findHome() :array
 {
+    $home = [];
 
     //connexion à la bdd
     $db   = new Database;
@@ -14,7 +15,7 @@ function findHome() :array
 
     $sql  = "SELECT car.modele, car.id_category, car.image_url, category.id, category.name
         FROM car 
-        INNER JOIN category ON category.id = car.id_category 
+        INNER JOIN category ON category.id = car.id_category
         WHERE id_category 
         GROUP BY category.id"
     ;
