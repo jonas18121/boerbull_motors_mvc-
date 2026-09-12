@@ -2,6 +2,10 @@
 error_reporting(E_ALL);//renvois les erreurs
 ini_set('display_errors', 1);
 
+///////// Util ////////
+require_once 'dumper.php';
+require_once 'handlerException.php';
+
 ///////// inclure les controlleurs ///////////
 require_once 'controller/HomeController.php';
 require_once 'controller/category/CategoryController.php';
@@ -17,7 +21,6 @@ require_once 'controller/user/logout/UserLogoutController.php';
 require_once 'controller/user/booking/UserBookingFormController.php';
 require_once 'controller/user/booking/UserBookingController.php';
 require_once 'controller/user/delete/UserDeleteSelfController.php';
-
 
                             /////ADMIN/////
 require_once 'controller/admin/login/AdminLoginController.php';
@@ -560,7 +563,21 @@ try{
         // on appel par defaut,  getHome()
         getHome();
     }
-}catch(Exception $e){
-    $errorMessage = $e->getMessage();
-    require_once 'www/templates/ErrorView.phtml';
+}
+catch (PDOException $e) {
+    throw $e;
+}
+catch (TypeError $e) {
+    throw $e;
+}
+catch (ParseError $e) {
+    throw $e;
+}
+catch (Error $e) {
+    throw $e;
+}
+catch(Exception $e){
+    throw $e;
+    // $errorMessage = $e->getMessage();
+    // require_once 'www/templates/ErrorView.phtml';
 }
